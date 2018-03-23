@@ -1,0 +1,21 @@
+:root {
+--background: #ccc;
+--lightBackground: #ccc;
+--green: green;
+}
+
+body {
+	background-color: var(--background);
+}
+
+a {
+  color: var(--green);
+  font-variant: all-small-caps;
+  transition: color 1s;
+}
+
+pre {
+  margin: calc(50px * 2);
+  color: var(--green);
+  background-color: var(--lightBackground);
+}
