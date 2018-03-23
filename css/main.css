@@ -12,7 +12,7 @@ a {
 }
 
 pre {
-  margin: 100px;
+  padding: 100px;
   color: green;
-  background-color: #ccc;
+  background-color: #f2f2f2;
 }

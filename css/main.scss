@@ -1,6 +1,6 @@
 :root {
 --background: #ccc;
---lightBackground: #ccc;
+--lightBackground: #f2f2f2;
 --green: green;
 }
 
@@ -15,7 +15,7 @@ a {
 }
 
 pre {
-  margin: calc(50px * 2);
+  padding: calc(50px * 2);
   color: var(--green);
   background-color: var(--lightBackground);
 }
