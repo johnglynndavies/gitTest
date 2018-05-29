@@ -1,0 +1,39 @@
+@import "../node_modules/lesshat/lesshat";
+
+@background: #ccc;
+@lightBackground: #f2f2f2;
+@green: green;
+
+
+body {
+	background-color: @background;
+}
+
+a {
+  color: @green;
+  font-variant: all-small-caps;
+  .align-content(flex-start);
+}
+
+pre {
+  padding: calc(50px * 2);
+  color: @green;
+  background-color: @lightBackground;
+}
+
+.flex {
+	.display(flex);
+	& > * {
+		.flex(1);
+	}
+}
+
+.outer {
+	width: 500px;
+	overflow: hidden;
+	.inner {
+		width: 1000px;
+		height: 100px;
+		background-color: @green;
+	}
+}
