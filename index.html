@@ -42,25 +42,44 @@
 	<script>
 	window.addEventListener('load', function(){ // on page load
 		
-		var box2 = document.getElementById('box2'),
-	    boxleft, // left position of moving box
-	    startx, // starting x coordinate of touch point
-	    dist = 0, // distance traveled by touch point
-	    touchobj = null // Touch object holder
+		var touchsurface = document.getElementById('box2'),
+	        startX,
+	        startY,
+	        dist,
+	        threshold = 150, //required min distance traveled to be considered swipe
+	        allowedTime = 200, // maximum time allowed to travel that distance
+	        elapsedTime,
+	        startTime
 	 
-	    box2.addEventListener('touchstart', function(e){
-	        touchobj = e.changedTouches[0] // reference first touch point
-	        boxleft = parseInt(box2.style.left) // get left position of box
-	        startx = parseInt(touchobj.clientX) // get x coord of touch point
-	        e.preventDefault() // prevent default click behavior
+	    function handleswipe(isrightswipe){
+	        if (isrightswipe)
+	            touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">right swipe!</span>'
+	        else{
+	            touchsurface.innerHTML = 'Condition for right swipe not met yet'
+	        }
+	    }
+	 
+	    touchsurface.addEventListener('touchstart', function(e){
+	        touchsurface.innerHTML = ''
+	        var touchobj = e.changedTouches[0]
+	        dist = 0
+	        startX = touchobj.pageX
+	        startY = touchobj.pageY
+	        startTime = new Date().getTime() // record time when finger first makes contact with surface
+	        e.preventDefault()
 	    }, false)
 	 
-	    box2.addEventListener('touchmove', function(e){
-	        touchobj = e.changedTouches[0] // reference first touch point for this event
-	        var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-	        // move box according to starting pos plus dist
-	        // with lower limit 0 and upper limit 380 so it doesn't move outside track:
-	        box2.style.left = ( (boxleft + dist > 900)? 900 : (boxleft + dist < -900)? -900 : boxleft + dist ) + 'px'
+	    touchsurface.addEventListener('touchmove', function(e){
+	        e.preventDefault() // prevent scrolling when inside DIV
+	    }, false)
+	 
+	    touchsurface.addEventListener('touchend', function(e){
+	        var touchobj = e.changedTouches[0]
+	        dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
+	        elapsedTime = new Date().getTime() - startTime // get time elapsed
+	        // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+	        var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
+	        handleswipe(swiperightBol)
 	        e.preventDefault()
 	    }, false)
 		 
