@@ -29,7 +29,9 @@ pre {
 }
 .outer {
   width: 500px;
+  padding: 10px 0;
   overflow: hidden;
+  background-color: black;
 }
 .outer .inner {
   width: 1000px;
