@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
   background-color: #ccc;
 }
@@ -9,7 +13,7 @@ a {
   align-content: flex-start;
 }
 pre {
-  padding: calc(50px * 2);
+  padding: 5vh;
   color: green;
   background-color: #f2f2f2;
 }
@@ -28,12 +32,16 @@ pre {
   flex: 1;
 }
 .outer {
-  width: 500px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  height: 120px;
   padding: 10px 0;
   overflow: hidden;
   background-color: black;
 }
 .outer .inner {
+  position: absolute;
   width: 1000px;
   height: 100px;
   background-color: green;

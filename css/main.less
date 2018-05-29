@@ -3,7 +3,10 @@
 @background: #ccc;
 @lightBackground: #f2f2f2;
 @green: green;
-
+*{
+	padding: 0;
+	margin:0;
+}
 
 body {
 	background-color: @background;
@@ -16,7 +19,7 @@ a {
 }
 
 pre {
-  padding: calc(50px * 2);
+  padding: 5vh;
   color: @green;
   background-color: @lightBackground;
 }
@@ -29,14 +32,15 @@ pre {
 }
 
 .outer {
-	width: 500px;
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	height: 120px;
 	padding: 10px 0;
 	overflow: hidden;
 	background-color: black;
 	.inner {
 		position: absolute;
-		left: 0;
-		top: 10px;
 		width: 1000px;
 		height: 100px;
 		background-color: @green;
